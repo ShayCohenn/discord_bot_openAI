@@ -1,4 +1,4 @@
-# Basic template for creating a discord bot using open ai api 
+# Basic template for creating a discord bot using open ai api using Python
 
 ## *You will need to get your discord bot token and your open ai api token and put them in 2 txt files "discord_token.txt" and "open_ai.txt"
 
