@@ -27,11 +27,9 @@ def get_res(msg: str) -> str:
     Returns:
         str: The generated response.
     """
+    api_key = read_api_key_from_file("open_ai.txt")
+    openai.api_key = api_key
     if msg.startswith("!!??!!"):
-        # Read the API key from the file "open_ai.txt"
-        api_key = read_api_key_from_file("open_ai.txt")
-        openai.api_key = api_key
-
         # Extract the message after "!!??!!" to use as input for OpenAI
         user_msg = msg[len("!!??!!"):].strip()
 
@@ -42,11 +40,21 @@ def get_res(msg: str) -> str:
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": user_msg}
             ],
-            temperature=0.7,  # Controls the randomness of the response 
+            temperature=0.7,  # Controls the randomness of the response
             max_tokens=500,    # Controls the maximum length of the generated response
             stop=["\n"]       # Stops the response at the first line break
         )
-
         return response.choices[0].message["content"].strip()
+    if msg.startswith("!!image!!"):
+        # Extract the message after "!!??!!" to use as input for OpenAI
+        user_msg = msg[len("!!image!!"):].strip()
+
+        # Call the OpenAI API to generate a response using chat completions
+        response = openai.Image.create(
+            prompt = user_msg,
+            n = 1,
+            size = "256x256"
+        )
+        return response['data'][0]['url']
 
     return 'מה שאתה אומר זה משו'
