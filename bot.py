@@ -8,7 +8,8 @@ async def send_msg(msg, user_msg, is_private):
     Parameters:
         msg (discord.Message): The original message sent by the user.
         user_msg (str): The user's message content.
-        is_private (bool): True if the response should be sent privately to the user, False otherwise.
+        is_private (bool): True if the response should be sent privately to the user,
+        False otherwise.
     """
     try:
         res = response.get_res(user_msg)
@@ -35,10 +36,10 @@ def read_token_from_file(file_path):
 
 def run_dis_bot():
     """
-    Run the Discord bot with the provided TOKEN from the 'discord_token.txt' file.
+    Run the Discord bot with the provided token from the 'discord_token.txt' file.
     """
     token_file_path = "discord_token.txt"
-    TOKEN = read_token_from_file(token_file_path)
+    token = read_token_from_file(token_file_path)
 
     intents = discord.Intents.default()
     intents.message_content = True
@@ -64,7 +65,7 @@ def run_dis_bot():
         else:
             await send_msg(msg, user_msg, is_private=False)
 
-    client.run(TOKEN)
+    client.run(token)
 
 if __name__ == "__main__":
     run_dis_bot()

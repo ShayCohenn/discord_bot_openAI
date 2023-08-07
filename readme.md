@@ -25,3 +25,6 @@ execute:
 ```
 python .\main.py
 ```
+
+
+Code averaged 9.8 on pylint 
