@@ -16,6 +16,10 @@ clone the repo:
 ```
 git clone https://github.com/ShayCohenn/discord_bot_openAI.git
 ```
+go into the repo's folder:
+```
+cd discord_bot_openAI
+```
 
 download dependencies:
 ```
