@@ -57,4 +57,4 @@ def get_res(msg: str) -> str:
         )
         return response['data'][0]['url']
 
-    return 'מה שאתה אומר זה משו'
+    return 'What?'
